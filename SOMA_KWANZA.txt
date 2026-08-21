@@ -1,0 +1,172 @@
+IWACHU IMSAMBARA — TOVUTI
+==========================
+
+MUUNDO WA FOLDA
+----------------
+iwachu-imsambara/
+  index.html          <- Ukurasa mkuu (maudhui yote ya tovuti)
+  css/style.css        <- Rangi, fonti na mpangilio (design)
+  js/script.js         <- Menyu ya simu, animation, na fomu ya kujiunga
+  SOMA_KWANZA.txt      <- Faili hii
+
+JINSI YA KUFUNGUA TOVUTI
+-------------------------
+1. Fungua folda "iwachu-imsambara".
+2. Bofya (double-click) faili "index.html" — itafunguka kwenye
+   kivinjari chako (Chrome, Safari, Edge n.k). Hiyo ndiyo tovuti yako,
+   inafanya kazi hata bila intaneti (isipokuwa fonti maalum
+   zinahitaji intaneti mara ya kwanza).
+
+JINSI YA KUHARIRI MAUDHUI (MANENO)
+------------------------------------
+Fungua faili "index.html" kwa programu yoyote ya kuhariri maandishi,
+kwa mfano: Notepad, TextEdit, Notepad++, VS Code, au Word Pad.
+
+Tafuta sehemu zenye maneno haya na uyabadilishe na taarifa halisi:
+
+- "Jina la Mwenyekiti", "Jina la Katibu", "Jina la Mhasibu"
+  -> badilisha na majina halisi ya viongozi wenu (sehemu ya UONGOZI).
+
+- "Jina la Mjumbe 1/2/3" (Baraza la Ushauri na Kamati ya Nidhamu)
+  -> badilisha na majina halisi ya wajumbe.
+
+- "Kanda A/B/C/D" na "Jina la Kiongozi" / "Eneo la Kanda"
+  -> badilisha na majina halisi ya kanda zenu na viongozi wake.
+  -> Kama kanda ni zaidi ya 4, nakili (copy) kipande kimoja cha:
+       <div class="kanda-card"> ... </div>
+     na kiweke tena ndani ya <div class="kanda-grid"> ... </div>
+     kisha badilisha maneno yake.
+
+- "+255 7XX XXX XXX", "iwachuimsambara@gmail.com", "Msambara"
+  -> badilisha na namba ya simu, barua pepe na eneo halisi
+     (sehemu ya WASILIANA NASI).
+
+- Maandishi yoyote yenye alama <!-- EDIT --> au maneno
+  "(Badilisha...)" / "(Weka...)" / "(Ongeza...)" ni sehemu
+  zilizowekwa kwa makusudi ili muzibadilishe.
+
+JINSI YA KUONGEZA LOGO NA PICHA ZA VIONGOZI
+----------------------------------------------
+Tovuti hii tayari IMEWEKEWA nafasi za picha — unachotakiwa kufanya
+ni kuweka picha zako kwenye folda ya "assets" kwa MAJINA HAYA HAYA
+YALIYO HAPA CHINI (herufi ndogo, bila nafasi). Mara utakapoweka
+picha yenye jina sahihi, itaonekana kwenye tovuti moja kwa moja —
+huna haja ya kugusa msimbo (code) wowote.
+
+1) LOGO YA KIKUNDI
+   Logo yako halisi (ile ya jiwe la ukumbusho lenye mlima, nyumba na
+   ngoma) TAYARI imewekwa kwenye: assets/logo.jpg — inaonekana
+   kwenye header (juu ya tovuti) na pia kwenye sehemu ya
+   "Sisi ni akina nani".
+   - Ukitaka kuibadilisha na logo nyingine baadaye, weka picha mpya
+     kwa jina lile lile "logo.jpg" ndani ya folda ya "assets"
+     (ibadilishe/andike juu ya iliyopo), au badilisha jina la faili
+     kwenye index.html sehemu ya "src=" liendane na jina jipya.
+   - Kama faili la logo.jpg halipo kwa sababu yoyote, alama ya SVG
+     ya akiba itaonekana badala yake kwenye header — hakuna picha
+     "iliyovunjika" itakayoonekana.
+
+2) PICHA ZA VIONGOZI WAKUU (Mwenyekiti, Katibu, Mhasibu)
+   Weka picha zako ndani ya folda: assets/viongozi/
+   kwa majina haya hasa:
+       assets/viongozi/mwenyekiti.jpg
+       assets/viongozi/katibu.jpg
+       assets/viongozi/mhasibu.jpg
+   - Picha ziwe za uso (portrait), mraba au karibu na mraba, ubora wa
+     kawaida (si zaidi ya 1-2 MB kila moja ili tovuti ipakie haraka).
+   - Kama kiongozi mmoja bado hana picha, herufi za awali za jina lake
+     (mfano "MW" kwa Mwenyekiti) zitaonekana badala yake — bila hitilafu.
+
+3) PICHA ZA VIONGOZI WA KANDA
+   Weka picha kwenye folda ile ile: assets/viongozi/
+   kwa majina haya:
+       assets/viongozi/kanda-a.jpg
+       assets/viongozi/kanda-b.jpg
+       assets/viongozi/kanda-c.jpg
+       assets/viongozi/kanda-d.jpg
+   - Kama mkiongeza kanda mpya (E, F, n.k), nakili kipande cha
+     <div class="kanda-card"> ... </div> kwenye index.html na
+     ubadilishe jina la picha (mfano kanda-e.jpg) na maandishi yake.
+
+KUMBUKA: Aina za picha zinazokubalika ni .jpg, .jpeg au .png. Kama
+umehifadhi picha yako kwa umbizo tofauti (mfano .webp), badilisha
+kiendelezi (extension) kwenye jina la faili la picha, au badilisha
+kwenye index.html sehemu ya "src=" iendane na jina halisi la faili
+lako (mfano src="assets/viongozi/mwenyekiti.png").
+
+SEHEMU YA "MATUKIO" (Misiba, Mikutano, Matukio Mengine)
+----------------------------------------------------------
+Tovuti ina sehemu mpya iitwayo "Matukio" (kati ya Huduma na Jiunge
+Nasi) yenye kadi 3 za mfano — kila kadi ina picha, aina ya tukio
+(lebo), kichwa cha habari, tarehe na maelezo mafupi.
+
+A) KUBADILISHA TUKIO LILILOPO
+   1. Weka picha yako ndani ya folda: assets/matukio/
+      kwa jina lililotajwa kwenye maoni (comment) juu ya kila kadi,
+      mfano: assets/matukio/tukio-1.jpg
+   2. Fungua index.html, tafuta sehemu ya "MATUKIO (Picha na Maelezo)".
+   3. Badilisha maneno haya na taarifa halisi:
+      - "Kichwa cha Habari cha Tukio"  -> jina/kichwa halisi cha tukio
+      - "Tarehe ya Tukio"              -> tarehe halisi (mfano: 12 Julai 2026)
+      - Aya ya "Maelezo mafupi ya tukio..." -> maelezo yako halisi
+      - Lebo ya juu (Msiba / Mkutano / Tukio la Furaha) -> badilisha
+        neno lililopo ndani ya <span class="event-tag ..."> kulingana
+        na aina ya tukio.
+
+B) KUONGEZA TUKIO JIPYA (kadi mpya)
+   1. Ndani ya index.html, tafuta sehemu ya "events-grid".
+   2. Nakili (copy) kipande kimoja kizima kuanzia
+      <article class="event-card reveal"> hadi </article>
+      kisha ubandike (paste) mara moja tena ndani ya
+      <div class="events-grid"> ... </div>.
+   3. Badilisha jina la picha (mfano tukio-4.jpg), kichwa, tarehe,
+      maelezo na lebo kama ulivyofanya sehemu (A) hapo juu.
+   4. Weka picha mpya kwenye assets/matukio/ kwa jina hilo hilo
+      ulilotumia kwenye "src=".
+
+Kama huna picha ya tukio fulani bado, alama ndogo ya picha
+(ikoni) itaonekana badala yake — tovuti haitaonyesha hitilafu.
+
+LEBO ZA RANGI ZA MATUKIO (event-tag)
+Unaweza kutumia moja ya lebo hizi tatu zilizowekewa rangi tayari,
+au kunakili mtindo wake kwa jina jipya kwenye css/style.css:
+   tag-msiba    -> rangi ya udongo (kwa taarifa za misiba)
+   tag-mkutano  -> rangi ya kijani cha msitu (kwa mikutano/taarifa rasmi)
+   tag-furaha   -> rangi ya dhahabu (kwa matukio ya furaha/mafanikio)
+
+JINSI YA KUBADILISHA RANGI
+----------------------------
+Fungua faili "css/style.css" na tazama sehemu ya juu kabisa
+inayoanza na ":root {". Hapo ndipo rangi zote kuu zimewekwa:
+
+  --forest   -> kijani cha msitu (rangi kuu ya nyuma)
+  --gold     -> dhahabu (rangi ya msisitizo / vitufe)
+  --clay     -> udongo/matofali (rangi ya pili ya msisitizo)
+  --cream    -> rangi ya krimu (mandhari nyepesi)
+  --charcoal -> rangi ya maandishi
+
+Badilisha thamani za hexadecimal (mfano #163831) na rangi
+unazopenda; rangi hiyo itabadilika kila mahali kwenye tovuti.
+
+FOMU YA KUJIUNGA
+-----------------
+Fomu ya "Jiunge Nasi" kwa sasa inaonyesha tu ujumbe wa asante
+baada ya kutumwa — bado HAIJAUNGANISHWA na mfumo wowote wa
+kupokea taarifa (barua pepe, database au WhatsApp). Ili taarifa
+za waombaji zikupatie kweli, unaweza kuiunganisha na huduma kama:
+  - Google Forms (badilisha fomu kabisa na Google Form iliyopachikwa)
+  - Formspree.io (weka "action" ya fomu kuelekeza kwenye akaunti yako)
+  - Namba ya WhatsApp (badilisha kitufe kiwe kiungo cha WhatsApp)
+
+Kama unahitaji msaada wa kuunganisha fomu hii na mfumo halisi,
+muulize msanidi wa website au Claude tena kwa maelekezo zaidi.
+
+KUWEKA TOVUTI KWENYE INTANETI (HOSTING)
+------------------------------------------
+Baada ya kuridhika na maudhui, unaweza kuweka tovuti hii mtandaoni
+bure kwa kutumia huduma kama:
+  - Netlify (netlify.com) — buruta (drag & drop) folda nzima
+  - GitHub Pages
+  - Vercel
+
+Karibu IWACHU IMSAMBARA!
