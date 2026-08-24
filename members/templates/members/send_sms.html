@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Send SMS - IWACHU IMSAMBARA</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-dark bg-primary">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="{% url 'home' %}">
+
+            IWACHU IMSAMBARA
+
+        </a>
+
+        <div>
+
+            <a href="{% url 'home' %}"
+               class="btn btn-light btn-sm">
+
+                Home
+
+            </a>
+
+            <a href="{% url 'members_list' %}"
+               class="btn btn-light btn-sm">
+
+                Members
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h4 class="mb-0">
+                Send SMS to Members
+            </h4>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <!-- SELECT MEMBERS -->
+
+                <h5 class="mb-3">
+                    Select Members
+                </h5>
+
+
+                <!-- SELECT ALL -->
+
+                <div class="form-check mb-3">
+
+                    <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="selectAll"
+                    >
+
+                    <label
+                        class="form-check-label fw-bold"
+                        for="selectAll"
+                    >
+
+                        Select All Members
+
+                    </label>
+
+                </div>
+
+
+                <!-- MEMBERS LIST -->
+
+                <div class="border rounded p-3">
+
+                    {% for member in members %}
+
+                        <div class="form-check mb-2">
+
+                            <input
+                                class="form-check-input member-checkbox"
+                                type="checkbox"
+                                name="members"
+                                value="{{ member.id }}"
+                                id="member{{ member.id }}"
+                            >
+
+                            <label
+                                class="form-check-label"
+                                for="member{{ member.id }}"
+                            >
+
+                                {{ member.jina }} - {{ member.simu }}
+
+                            </label>
+
+                        </div>
+
+                    {% empty %}
+
+                        <p class="text-danger mb-0">
+
+                            No members registered.
+
+                        </p>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <hr class="my-4">
+
+
+                <!-- MESSAGE -->
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-bold">
+
+                        Message
+
+                    </label>
+
+                    <textarea
+                        name="message"
+                        class="form-control"
+                        rows="5"
+                        placeholder="Write your message here..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                >
+
+                    📤 Send SMS
+
+                </button>
+
+
+                <a
+                    href="{% url 'members_list' %}"
+                    class="btn btn-secondary"
+                >
+
+                    Cancel
+
+                </a>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    // Select All checkbox
+
+    const selectAll =
+        document.getElementById('selectAll');
+
+
+    // Get all member checkboxes
+
+    const memberCheckboxes =
+        document.querySelectorAll('.member-checkbox');
+
+
+    // Select or unselect all members
+
+    selectAll.addEventListener('change', function () {
+
+        memberCheckboxes.forEach(function (checkbox) {
+
+            checkbox.checked = selectAll.checked;
+
+        });
+
+    });
+
+
+    // Update Select All automatically
+
+    memberCheckboxes.forEach(function (checkbox) {
+
+        checkbox.addEventListener('change', function () {
+
+            const allChecked =
+                Array.from(memberCheckboxes)
+                .every(function (checkbox) {
+
+                    return checkbox.checked;
+
+                });
+
+
+            selectAll.checked = allChecked;
+
+        });
+
+    });
+
+</script>
+
+
+</body>
+
+</html>
