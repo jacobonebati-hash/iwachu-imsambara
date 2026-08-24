@@ -29,11 +29,16 @@ load_dotenv(BASE_DIR / ".env")
 # SECURITY
 # =========================================================
 
-SECRET_KEY = 'django-insecure-6g5edm7&wtr02m2tdaxcisovan*ci5f26s$e612h4!sp5b+=%v'
+SECRET_KEY = os.getenv(
+    "SECRET_KEY",
+    "django-insecure-development-key"
+)
 
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    os.getenv("RENDER_EXTERNAL_HOSTNAME", "localhost"),
+]
 
 
 # =========================================================
@@ -63,7 +68,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
 
     'django.middleware.security.SecurityMiddleware',
-
+   'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
     'django.middleware.common.CommonMiddleware',
@@ -190,7 +195,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 # =========================================================
 # OLD SMS API
 # =========================================================
