@@ -2,7 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Member, SMSMessage
 
+from django.contrib.auth.decorators import login_required, permission_required
 
+
+@login_required
+@permission_required("members.view_member", raise_exception=True)
+def member_list(request):
+    ...
 # ==========================================
 # HOME
 # ==========================================

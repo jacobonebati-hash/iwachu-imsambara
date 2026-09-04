@@ -51,18 +51,91 @@ if os.getenv("RENDER_EXTERNAL_HOSTNAME"):
 
 INSTALLED_APPS = [
 
+    # Admin theme
+    "unfold",
+
     # Django applications
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 
     # Our applications
-    'members',
-    'sms',
+    "members",
+    "sms",
 ]
+# =========================================================
+# UNFOLD ADMIN THEME
+# =========================================================
+
+UNFOLD = {
+
+    "SITE_TITLE": "IWACHU IMSAMBARA",
+
+    "SITE_HEADER": "IWACHU IMSAMBARA",
+
+    "SITE_SUBHEADER": "Member Management & SMS System",
+
+    "SITE_SYMBOL": "groups",
+
+    "SHOW_HISTORY": True,
+
+    "SHOW_VIEW_ON_SITE": True,
+
+    "SHOW_BACK_BUTTON": True,
+    "DASHBOARD_CALLBACK":
+    "iwachu_system.admin_dashboard.dashboard_callback",
+
+    "COLORS": {
+        "primary": {
+            "50": "239 246 255",
+            "100": "219 234 254",
+            "200": "191 219 254",
+            "300": "147 197 253",
+            "400": "96 165 250",
+            "500": "59 130 246",
+            "600": "37 99 235",
+            "700": "29 78 216",
+            "800": "30 64 175",
+            "900": "30 58 138",
+            "950": "23 37 84",
+        },
+    },
+
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+    },
+
+    "TABS": [
+        {
+            "models": [
+                "members.member",
+            ],
+            "items": [
+                {
+                    "title": "Members",
+                    "icon": "groups",
+                    "link": "/admin/members/member/",
+                },
+            ],
+        },
+        {
+            "models": [
+                "sms.smsmessage",
+            ],
+            "items": [
+                {
+                    "title": "SMS Messages",
+                    "icon": "sms",
+                    "link": "/admin/sms/smsmessage/",
+                },
+            ],
+        },
+    ],
+}
 
 
 # =========================================================
@@ -98,14 +171,15 @@ ROOT_URLCONF = 'iwachu_system.urls'
 # =========================================================
 # TEMPLATES
 # =========================================================
-
 TEMPLATES = [
 
     {
         'BACKEND':
             'django.template.backends.django.DjangoTemplates',
 
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / "templates"
+        ],
 
         'APP_DIRS': True,
 
@@ -123,7 +197,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 # =========================================================
 # WSGI
@@ -197,9 +270,23 @@ USE_TZ = True
 # STATIC FILES
 # =========================================================
 
-STATIC_URL = 'static/'
+STATIC_URL = "/static/"
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 # =========================================================
 # OLD SMS API
 # =========================================================

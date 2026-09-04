@@ -1,0 +1,319 @@
+{% extends "unfold/layouts/base.html" %}
+
+{% load i18n %}
+
+{% block title %}
+    IWACHU IMSAMBARA Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="p-6">
+
+    <!-- HEADER -->
+
+    <div class="mb-8">
+
+        <h1 class="text-3xl font-bold">
+            IWACHU IMSAMBARA
+        </h1>
+
+        <p class="text-gray-500 mt-2">
+            Member Management & SMS System
+        </p>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+
+        <!-- TOTAL MEMBERS -->
+
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow p-6">
+
+            <div class="flex justify-between">
+
+                <div>
+
+                    <p class="text-gray-500">
+                        Total Members
+                    </p>
+
+                    <h2 class="text-3xl font-bold mt-2">
+                        {{ total_members }}
+                    </h2>
+
+                </div>
+
+                <div class="text-3xl">
+                    👥
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIVE MEMBERS -->
+
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow p-6">
+
+            <div class="flex justify-between">
+
+                <div>
+
+                    <p class="text-gray-500">
+                        Active Members
+                    </p>
+
+                    <h2 class="text-3xl font-bold mt-2">
+                        {{ active_members }}
+                    </h2>
+
+                </div>
+
+                <div class="text-3xl">
+                    ✅
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- SMS -->
+
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow p-6">
+
+            <div class="flex justify-between">
+
+                <div>
+
+                    <p class="text-gray-500">
+                        Total SMS
+                    </p>
+
+                    <h2 class="text-3xl font-bold mt-2">
+                        {{ total_sms }}
+                    </h2>
+
+                </div>
+
+                <div class="text-3xl">
+                    📱
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- TODAY -->
+
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow p-6">
+
+            <div class="flex justify-between">
+
+                <div>
+
+                    <p class="text-gray-500">
+                        Registered Today
+                    </p>
+
+                    <h2 class="text-3xl font-bold mt-2">
+                        {{ today_members }}
+                    </h2>
+
+                </div>
+
+                <div class="text-3xl">
+                    🆕
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- QUICK ACTIONS -->
+
+    <div class="bg-white dark:bg-gray-900 rounded-xl shadow p-6 mb-8">
+
+        <h2 class="text-xl font-bold mb-5">
+            Quick Actions
+        </h2>
+
+
+        <div class="flex flex-wrap gap-4">
+
+            <a
+                href="/admin/members/member/"
+                class="px-5 py-3 rounded-lg bg-blue-600 text-white font-semibold"
+            >
+                👥 Manage Members
+            </a>
+
+
+            <a
+                href="/sms/send/"
+                class="px-5 py-3 rounded-lg bg-green-600 text-white font-semibold"
+            >
+                📱 Send SMS
+            </a>
+
+
+            <a
+                href="/admin/sms/smsmessage/"
+                class="px-5 py-3 rounded-lg bg-purple-600 text-white font-semibold"
+            >
+                📊 SMS History
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- TWO COLUMNS -->
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+
+        <!-- RECENT MEMBERS -->
+
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow p-6">
+
+            <div class="flex justify-between mb-5">
+
+                <h2 class="text-xl font-bold">
+                    Recent Members
+                </h2>
+
+                <a
+                    href="/admin/members/member/"
+                    class="text-blue-600"
+                >
+                    View all
+                </a>
+
+            </div>
+
+
+            <div class="space-y-4">
+
+                {% for member in recent_members %}
+
+                <div class="flex justify-between border-b pb-3">
+
+                    <div>
+
+                        <p class="font-semibold">
+                            {{ member.jina }}
+                        </p>
+
+                        <p class="text-sm text-gray-500">
+                            {{ member.simu }}
+                        </p>
+
+                    </div>
+
+
+                    {% if member.status %}
+
+                    <span class="text-green-600 font-semibold">
+                        Active
+                    </span>
+
+                    {% else %}
+
+                    <span class="text-red-600 font-semibold">
+                        Inactive
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+                {% empty %}
+
+                <p class="text-gray-500">
+                    Hakuna wanachama bado.
+                </p>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RECENT SMS -->
+
+        <div class="bg-white dark:bg-gray-900 rounded-xl shadow p-6">
+
+            <div class="flex justify-between mb-5">
+
+                <h2 class="text-xl font-bold">
+                    Recent SMS
+                </h2>
+
+                <a
+                    href="/admin/sms/smsmessage/"
+                    class="text-blue-600"
+                >
+                    View all
+                </a>
+
+            </div>
+
+
+            <div class="space-y-4">
+
+                {% for sms in recent_sms %}
+
+                <div class="border-b pb-3">
+
+                    <p class="font-semibold">
+                        {{ sms.message|truncatechars:70 }}
+                    </p>
+
+                    <div class="flex justify-between mt-2">
+
+                        <span class="text-sm text-gray-500">
+                            {{ sms.created_at }}
+                        </span>
+
+                        <span class="text-sm">
+                            {{ sms.total_recipients }} recipients
+                        </span>
+
+                    </div>
+
+                </div>
+
+                {% empty %}
+
+                <p class="text-gray-500">
+                    Hakuna SMS bado.
+                </p>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+{% endblock %}

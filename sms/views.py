@@ -7,7 +7,15 @@ from .models import SMSMessage, SMSRecipient
 
 from .sms_service import send_sms_api
 
+from django.contrib.auth.decorators import login_required, permission_required
 
+
+@login_required
+@permission_required("sms.add_smsmessage", raise_exception=True)
+def send_sms(request):
+    # code yako ya kutuma SMS hapa
+
+    ...
 # =========================================================
 # SMS HISTORY
 # =========================================================

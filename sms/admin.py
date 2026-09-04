@@ -6,17 +6,23 @@ from .models import SMSMessage
 class SMSMessageAdmin(admin.ModelAdmin):
 
     list_display = (
-        'message',
-        'total_recipients',
-        'status',
-        'created_at',
+        "message",
+        "total_recipients",
+        "status",
+        "created_at",
     )
 
     list_filter = (
-        'status',
-        'created_at',
+        "status",
+        "created_at",
     )
 
     search_fields = (
-        'message',
+        "message",
     )
+
+    ordering = (
+        "-created_at",
+    )
+
+    list_per_page = 20
