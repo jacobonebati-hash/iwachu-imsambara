@@ -79,7 +79,7 @@
             <div class="card shadow">
                 <div class="card-body text-center">
                     <h5>Active Members</h5>
-                    <h2>0</h2>
+                    <h2>{{ active_members }}</h2>
                 </div>
             </div>
         </div>
@@ -93,11 +93,16 @@
 
         <div class="col-md-4 mb-3">
             <a href="{% url 'register_member' %}"
-   class="btn btn-primary w-100 p-3">
+               class="btn btn-primary w-100 p-3">
+                Register Member
+            </a>
+        </div>
 
-    Register Member
-
-</a>
+        <div class="col-md-4 mb-3">
+            <a href="{% url 'import_members' %}"
+               class="btn btn-success w-100 p-3">
+                📊 Import Excel
+            </a>
         </div>
 
         <div class="col-md-4 mb-3">

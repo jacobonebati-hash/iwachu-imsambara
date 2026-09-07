@@ -50,6 +50,13 @@
 
             </a>
 
+            <a href="{% url 'import_members' %}"
+               class="btn btn-light btn-sm">
+
+                Import Excel
+
+            </a>
+
         </div>
 
     </div>
@@ -62,6 +69,14 @@
 
 <div class="container mt-5">
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show shadow-sm">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
 
     <div class="d-flex justify-content-between align-items-center mb-4">
 
@@ -70,12 +85,17 @@
         </h2>
 
 
-        <a href="{% url 'register_member' %}"
-           class="btn btn-primary">
+        <div class="d-flex gap-2">
+            <a href="{% url 'import_members' %}"
+               class="btn btn-success">
+                📊 Import Excel
+            </a>
 
-            + Register Member
-
-        </a>
+            <a href="{% url 'register_member' %}"
+               class="btn btn-primary">
+                + Register Member
+            </a>
+        </div>
 
     </div>
 
@@ -255,6 +275,7 @@
 </div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
